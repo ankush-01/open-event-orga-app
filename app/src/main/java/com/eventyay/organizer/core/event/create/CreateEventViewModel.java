@@ -105,7 +105,7 @@ public class CreateEventViewModel extends ViewModel {
             ZonedDateTime start = DateUtils.getDate(event.getStartsAt());
             ZonedDateTime end = DateUtils.getDate(event.getEndsAt());
 
-            if (!end.isAfter(start)) {
+            if (!end.isAfter(start) && start.getDayOfYear()==end.getDayOfYear() && start.getYear()==end.getYear()) {
                 onError.setValue("End time should be after start time");
                 return false;
             }
